@@ -18,10 +18,49 @@ model User {
   image        String?
   isOnline     Boolean?  @default(false)
   lastOnline   DateTime? @default(now())
+  accounts     Account[]
 }
 
-model Token {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
-  username     String
-  refreshToken String
+model Project {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectName String
+  description String
+  userIDs     String[] @db.ObjectId
 }
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// model VerificationToken {
+//   id      String   @id @default(auto()) @map("_id") @db.ObjectId
+//   email   String
+//   token   String   @unique
+//   expires DateTime
+//
+//   @@unique([email, token])
+// }
+
+// model PasswordResetToken {
+//   id String @id @default(cuid())
+//   email String
+//   token String @unique
+//   expires DateTime
+//
+//   @@unique([email, token])
+// }
