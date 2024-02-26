@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
-import { prisma } from '@/utils/prisma';
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from '@auth/prisma-adapter';
 import authConfig from '@/auth.config';
+import { prisma } from '@/utils/prisma';
 
 export const {
   auth,
@@ -11,22 +11,27 @@ export const {
   unstable_update
 } = NextAuth({
   ...authConfig,
+  debug: true,
   pages: {
     signIn: '/login',
+  },
+  events: {
+    async linkAccount({ user }) {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() }
+      })
+    }
   },
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider !== 'credentials') return true;
-
-      // console.log(user, account)
 
       const existingUser = await prisma.user.findUnique({
         where: {
           id: user.id
         }
       });
-
-
 
       return !!existingUser;
     },
@@ -35,12 +40,9 @@ export const {
         session.user.id = token.sub;
       }
 
-
       if (session.user) {
         session.user.name = token.name;
-        if (token.email != null) {
-          session.user.email = token.email;
-        }
+        session.user.email = token.email!;
         session.user.isOAuth = token.isOAuth as boolean;
       }
 
@@ -64,12 +66,11 @@ export const {
       })
 
       token.isOAuth = !!existingAccount;
-      token.name = existingUser.username;
+      token.name = existingUser.name;
       token.email = existingUser.email;
-
       return token;
     }
   },
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
 });

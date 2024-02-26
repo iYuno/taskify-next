@@ -1,22 +1,20 @@
 'use server'
 import { AuthError } from 'next-auth';
-import { z } from 'zod'
-import { LoginSchema } from '@/schemas/schemas';
-import { prisma } from '@/utils/prisma';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { signIn, signOut } from '@/auth';
+import { User } from '@prisma/client';
+import { RegisterSchema } from '@/schemas/schemas';
+import { prisma } from '@/utils/prisma';
+import bcrypt from 'bcryptjs';
+import { redirect } from 'next/navigation';
+import { getUser } from '@/app/lib/data';
 
-
-interface FormDataWithCallback extends FormData {
-  callbackUrl?: string | null;
-}
 export async function authenticateWithCredentials(
   prevState: string | undefined,
   formData: {
     data: FormData,
     callbackUrl?: string | null
   },
-  callbackUrl?: string | null
 ) {
 
   try {
@@ -38,6 +36,47 @@ export async function authenticateWithCredentials(
   }
 }
 
-export const logout = async () => {
+export const logout = async() => {
   await signOut();
 };
+
+export async function signUp(
+  data: FormData,
+  callbackUrl?: string | null
+) {
+
+  const userForm = {
+    username: data.get('username'),
+    email: data.get('email'),
+    password: data.get('password'),
+    firstName: data.get('firstName'),
+    lastName: data.get('lastName'),
+
+  }
+
+  const validateFields = RegisterSchema.safeParse(userForm);
+
+  if (!validateFields.success) {
+    return { error: 'Invalid fields!' }
+  }
+
+  const { ...user } = validateFields.data
+
+  const existingUser = await getUser(user.email);
+
+  if (existingUser) {
+    return { error: 'Email already in use!' };
+  }
+
+  await prisma.user.create({
+    data: {
+      email: user.email,
+      passwordHash: bcrypt.hashSync(user.password, 10).toString(),
+      username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    }
+  })
+
+  return { success: true }
+}

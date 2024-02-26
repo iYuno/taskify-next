@@ -6,16 +6,6 @@ import { signOut } from '@/auth';
 
 export default async function Page() {
 
-  // await prisma.user.create({
-  //   data: {
-  //     email: 'me@example.com',
-  //     passwordHash: bcrypt.hashSync('qwerty123', 10).toString(),
-  //     username: 'me',
-  //     firstName: 'Me',
-  //     lastName: 'Me',
-  //   } as User
-  // })
-
   const user = await currentUser()
 
   return (
@@ -27,6 +17,8 @@ export default async function Page() {
         'use server'
         if (user) {
           await signOut();
+        } else {
+          redirect('/auth/login');
         }
       }}>
         <button>{user ? 'sign out' : 'sign in'}</button>
