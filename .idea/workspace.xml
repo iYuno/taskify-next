@@ -9,16 +9,16 @@
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/auth/[...nextauth].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/lib/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ui/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ui/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ui/loginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ui/registerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ui/registerForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auth.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schemas/schemas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/schemas/schemas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -60,13 +60,13 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/romanloginov/WebstormProjects/taskify-next/src/app/ui&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/romanloginov/WebstormProjects/taskify-next&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.HTML&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/romanloginov/WebstormProjects/taskify-next/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -115,7 +115,10 @@
       <workItem from="1708601902033" duration="21316000" />
       <workItem from="1708686111692" duration="11825000" />
       <workItem from="1708771586390" duration="11962000" />
-      <workItem from="1708945001804" duration="8589000" />
+      <workItem from="1708945001804" duration="10743000" />
+      <workItem from="1709120482290" duration="864000" />
+      <workItem from="1709121541115" duration="10300000" />
+      <workItem from="1709199142869" duration="5221000" />
     </task>
     <servers />
   </component>
@@ -132,5 +135,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add authorization" />
   </component>
 </project>

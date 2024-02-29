@@ -1,10 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
+import { Montserrat, Lexend } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] });
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+})
+
+const lexend = Lexend({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lexend',
+})
 
 export const metadata: Metadata = {
   title: 'Taskify',
@@ -13,8 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-                                     children,
-                                   }: Readonly<{
+                                           children,
+                                         }: Readonly<{
   children: React.ReactNode;
 }>) {
 
@@ -22,8 +32,8 @@ export default async function RootLayout({
 
   return (
     <SessionProvider session={session}>
-      <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <html lang="en" className={`${montserrat.variable} ${lexend.variable}`}>
+      <body className={'bg-background'}>{children}</body>
       </html>
     </SessionProvider>
   );

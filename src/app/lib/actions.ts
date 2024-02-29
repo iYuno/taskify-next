@@ -46,12 +46,8 @@ export async function signUp(
 ) {
 
   const userForm = {
-    username: data.get('username'),
     email: data.get('email'),
     password: data.get('password'),
-    firstName: data.get('firstName'),
-    lastName: data.get('lastName'),
-
   }
 
   const validateFields = RegisterSchema.safeParse(userForm);
@@ -62,6 +58,14 @@ export async function signUp(
 
   const { ...user } = validateFields.data
 
+  if (!(await validEmail(user.email))) {
+    return { error: 'Invalid email!' }
+  }
+
+  if (!(await validPassword(user.password))) {
+    return { error: 'Invalid password!' }
+  }
+
   const existingUser = await getUser(user.email);
 
   if (existingUser) {
@@ -71,12 +75,43 @@ export async function signUp(
   await prisma.user.create({
     data: {
       email: user.email,
-      passwordHash: bcrypt.hashSync(user.password, 10).toString(),
-      username: user.username,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      password: bcrypt.hashSync(user.password, 10).toString(),
     }
   })
 
-  return { success: true }
+  return { success: true, error: undefined }
+}
+
+export const validEmail = async (email: string): Promise<boolean | undefined> => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email === '') {
+    return undefined;
+  }
+  return emailRegex.test(email);
+}
+
+export const validPassword = async (password: string): Promise<undefined | boolean> => {
+
+  if (password === '') {
+    return undefined;
+  }
+
+  if (password.length < 6) {
+    return false;
+  }
+
+  // Проверка на наличие хотя бы одной цифры
+  if (!/\d/.test(password)) {
+    return false;
+  }
+
+  // Проверка на наличие хотя бы одной буквы в верхнем регистре
+  if (!/[A-Z]/.test(password)) {
+    return false;
+  }
+
+  // Проверка на наличие хотя бы одной буквы в нижнем регистре
+  return /[a-z]/.test(password);
+
 }

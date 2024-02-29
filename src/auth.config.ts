@@ -21,11 +21,11 @@ export default {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
 
-          if (!user || !user.passwordHash) return null;
+          if (!user || !user.password) return null;
 
           const passwordsMatch = await bcrypt.compare(
             password,
-            user.passwordHash,
+            user.password,
           );
           if (passwordsMatch) return user;
         }
