@@ -2,12 +2,10 @@
 import { AuthError } from 'next-auth';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { signIn, signOut } from '@/auth';
-import { User } from '@prisma/client';
 import { RegisterSchema } from '@/schemas/schemas';
 import { prisma } from '@/utils/prisma';
 import bcrypt from 'bcryptjs';
-import { redirect } from 'next/navigation';
-import { getUser } from '@/app/lib/data';
+import { getUser } from '@/lib/data';
 
 export async function authenticateWithCredentials(
   prevState: string | undefined,
@@ -50,6 +48,8 @@ export async function signUp(
     password: data.get('password'),
   }
 
+  console.log(userForm)
+
   const validateFields = RegisterSchema.safeParse(userForm);
 
   if (!validateFields.success) {
@@ -82,7 +82,7 @@ export async function signUp(
   return { success: true, error: undefined }
 }
 
-export const validEmail = async (email: string): Promise<boolean | undefined> => {
+export const validEmail = async(email: string): Promise<boolean | undefined> => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (email === '') {
@@ -91,7 +91,7 @@ export const validEmail = async (email: string): Promise<boolean | undefined> =>
   return emailRegex.test(email);
 }
 
-export const validPassword = async (password: string): Promise<undefined | boolean> => {
+export const validPassword = async(password: string): Promise<undefined | boolean> => {
 
   if (password === '') {
     return undefined;

@@ -1,103 +1,78 @@
-import colors from 'tailwindcss/colors';
+import type { Config } from 'tailwindcss'
 
-module.exports = {
+import {
+  orange,
+  blue,
+  plum,
+  gray,
+  green,
+  orangeDark,
+  blueDark,
+  plumDark,
+  grayDark,
+  greenDark,
+  whiteA,
+  blackA
+} from '@radix-ui/colors';
+import { transparent } from 'tailwindcss/colors'
+
+const config = {
+  darkMode: 'class',
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: '',
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
       },
-    },
-    colors: {
-      ...colors,
-      'text': '#ecf6f4',
-      'background': '#050a09',
-      'primary': {
-        50: '#e7fdfa',
-        100: '#cffcf5',
-        200: '#9ff9eb',
-        300: '#6ff6e2',
-        400: '#3ff3d8',
-        500: '#0ff0ce',
-        600: '#0cc0a5',
-        700: '#09907c',
-        800: '#066052',
-        900: '#033029',
-        950: '#021815',
-      },
-      'secondary': {
-        50: '#fae7fd',
-        100: '#f5d0fb',
-        200: '#eba0f8',
-        300: '#e171f4',
-        400: '#d641f1',
-        500: '#cc12ed',
-        600: '#a30ebe',
-        700: '#7b0b8e',
-        800: '#52075f',
-        900: '#29042f',
-        950: '#140218',
-      },
-      'accent_cyan': {
-        50: '#e7f3fd',
-        100: '#d0e6fb',
-        200: '#a1cdf7',
-        300: '#71b5f4',
-        400: '#429cf0',
-        500: '#1383ec',
-        600: '#0f69bd',
-        700: '#0b4f8e',
-        800: '#08345e',
-        900: '#041a2f',
-        950: '#020d18',
-      },
-      'accent_red': {
-        50: '#fce9ef',
-        100: '#f8d3df',
-        200: '#f2a6bf',
-        300: '#eb7aa0',
-        400: '#e44e80',
-        500: '#de2160',
-        600: '#b11b4d',
-        700: '#85143a',
-        800: '#590d26',
-        900: '#2c0713',
-        950: '#16030a',
-      },
-      'accent_orange': {
-        50: '#fdeee8',
-        100: '#faddd1',
-        200: '#f6bba2',
-        300: '#f19974',
-        400: '#ed7845',
-        500: '#e85617',
-        600: '#ba4512',
-        700: '#8b330e',
-        800: '#5d2209',
-        900: '#2e1105',
-        950: '#170902',
-      }
-    },
-
-    fontSize: {
-      sm: '0.750rem',
-      base: '1rem',
-      xl: '1.333rem',
-      '2xl': '1.777rem',
-      '3xl': '2.369rem',
-      '4xl': '3.158rem',
-      '5xl': '4.210rem',
     },
     fontFamily: {
-      sans: ['var(--font-montserrat)'],
-      mono: ['var(--font-lexend)'],
+      'poppins': 'var(--font-poppins)',
+      'montserrat': 'var(--font-montserrat)'
+    },
+
+    colors: {
+      'blue': { ...blue },
+      'darkBlue': { ...blueDark },
+      'green': { ...green},
+      'darkGreen': {...greenDark},
+      'orange': {...orange},
+      'darkOrange': {...orangeDark},
+      'plum': {...plum},
+      'darkPlum': {...plumDark},
+      'gray': {...gray},
+      'darkGray': {...grayDark},
+      'transparent': transparent,
+      'black': {...blackA},
+      'white': {...whiteA}
+    },
+    extend: {
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
     },
   },
-  plugins: [],
-};
+  plugins: [
+    require('tailwindcss-animate'),
+  ],
+} satisfies Config
+
+export default config

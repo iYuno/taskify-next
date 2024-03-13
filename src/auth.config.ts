@@ -1,9 +1,9 @@
 import type { NextAuthConfig } from 'next-auth';
-import Github from "next-auth/providers/github";
+import Github from 'next-auth/providers/github';
 import Credentials from '@auth/core/providers/credentials';
 import { z } from 'zod';
-import { getUser } from '@/app/lib/data';
 import bcrypt from 'bcryptjs';
+import { getUser } from '@/lib/data';
 
 export default {
   providers: [

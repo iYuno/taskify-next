@@ -1,12 +1,7 @@
-import NextAuth from "next-auth";
+import NextAuth from 'next-auth';
 
-import authConfig from "@/auth.config";
-import {
-  DEFAULT_LOGIN_REDIRECT,
-  apiAuthPrefix,
-  authRoutes,
-  publicRoutes,
-} from "@/routes";
+import authConfig from '@/auth.config';
+import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes, } from '@/routes';
 
 const { auth } = NextAuth(authConfig);
 
@@ -49,7 +44,7 @@ export const config = {
   // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
   // matcher: [
-  //   '/dashboard/:path*',
+  //   '/home/:path*',
   //   '/auth/:path*'
   // ],
 };

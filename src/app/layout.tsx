@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
-import { Montserrat, Lexend } from 'next/font/google'
+import { Montserrat, Poppins } from 'next/font/google'
+import { Providers } from '@/app/providers';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -10,10 +11,11 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 })
 
-const lexend = Lexend({
+const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-lexend',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
 
 export const metadata: Metadata = {
@@ -29,11 +31,12 @@ export default async function RootLayout({
 }>) {
 
   const session = await auth()
-
   return (
     <SessionProvider session={session}>
-      <html lang="en" className={`${montserrat.variable} ${lexend.variable}`}>
-      <body className={'bg-background'}>{children}</body>
+      <html lang="en" className={`${montserrat.variable}`} suppressHydrationWarning>
+      <body className={'dark:bg-darkGray-gray2 bg-gray-gray2'}>
+      <Providers>{children}</Providers>
+      </body>
       </html>
     </SessionProvider>
   );

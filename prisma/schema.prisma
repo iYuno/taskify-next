@@ -18,10 +18,21 @@ model User {
 }
 
 model Project {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
   projectName String
   description String
+  userIDs     String[]    @db.ObjectId
+  teamSpaces  Teamspace[]
+}
+
+model Teamspace {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamName    String
+  description String
   userIDs     String[] @db.ObjectId
+  Project     Project? @relation(fields: [projectId], references: [id])
+  projectId   String?  @db.ObjectId
+  Task        Task[]
 }
 
 model Account {
@@ -41,6 +52,15 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Task {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  creator     String    @db.ObjectId
+  title       String
+  description String
+  teamSpace   Teamspace @relation(fields: [teamSpaceId], references: [id])
+  teamSpaceId String    @db.ObjectId
 }
 
 model VerificationToken {
