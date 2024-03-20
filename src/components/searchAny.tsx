@@ -14,7 +14,7 @@ export default function searchAny() {
         </div>
         <input
           type="text"
-          className="bg-background mainText w-[100%] font-light outline-2 focus-visible:outline-none placeholder:text-darkGray-gray10 dark:placeholder:text-gray-gray10"
+          className="bg-background mainText w-[100%] font-light outline-2 focus-visible:outline-none placeholder:text-neutral-600 dark:placeholder:text-neutral-400"
           placeholder="Search"
         />
         <div className="flex space-x-1">

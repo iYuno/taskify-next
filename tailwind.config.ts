@@ -1,21 +1,5 @@
 import type { Config } from 'tailwindcss'
 
-import {
-  orange,
-  blue,
-  plum,
-  gray,
-  green,
-  orangeDark,
-  blueDark,
-  plumDark,
-  grayDark,
-  greenDark,
-  whiteA,
-  blackA
-} from '@radix-ui/colors';
-import { transparent } from 'tailwindcss/colors'
-
 const config = {
   darkMode: 'class',
   content: [
@@ -36,22 +20,6 @@ const config = {
     fontFamily: {
       'poppins': 'var(--font-poppins)',
       'montserrat': 'var(--font-montserrat)'
-    },
-
-    colors: {
-      'blue': { ...blue },
-      'darkBlue': { ...blueDark },
-      'green': { ...green},
-      'darkGreen': {...greenDark},
-      'orange': {...orange},
-      'darkOrange': {...orangeDark},
-      'plum': {...plum},
-      'darkPlum': {...plumDark},
-      'gray': {...gray},
-      'darkGray': {...grayDark},
-      'transparent': transparent,
-      'black': {...blackA},
-      'white': {...whiteA}
     },
     extend: {
       keyframes: {

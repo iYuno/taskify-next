@@ -1,5 +1,6 @@
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_noStore, unstable_noStore as noStore } from 'next/cache';
 import { prisma } from '@/utils/prisma';
+import { Teamspace, User } from '@prisma/client';
 
 export async function fetchUserProjects(userId: string) {
   noStore();
@@ -35,6 +36,7 @@ export async function getUser(email: string) {
 }
 
 export async function getProjectsList(userId: string) {
+  // await new Promise(resolve => setTimeout(resolve, 5000));
   try {
     return await prisma.project.findMany({
       where: {
@@ -53,6 +55,7 @@ export async function getProjectsList(userId: string) {
 }
 
 export async function getProject(id: string) {
+  unstable_noStore()
   try {
     return await prisma.project.findUnique({
       where: {
@@ -69,14 +72,64 @@ export async function getProject(id: string) {
 }
 
 export async function getTeamSpace(id: string) {
+  unstable_noStore()
   try {
-    return await prisma.teamspace.findUnique({
+    // await new Promise(resolve => setTimeout(resolve, 1500));
+    const team = await prisma.teamspace.findUnique({
       where: {
         id: id
+      },
+    })
+    const project = await prisma.project.findUnique({
+      where: {
+        id: team?.projectId
       }
     })
+    return { projectName: project?.projectName, teamSpace: team }
+  } catch (error) {
+    console.error('Failed to fetch team-space:', error);
+    throw new Error('Failed to fetch team-space.');
   }
-  catch (error) {
+}
+
+export async function getTeamSpaceInfo(id: string): Promise<{
+  projectName: string,
+  teamSpace: Pick<Teamspace, 'teamName' | 'id'>
+    & {userPreview: Pick<User, 'image' | 'firstName' | 'lastName' | 'name'>[], totalUsersAmount: number}
+}> {
+  unstable_noStore()
+  try {
+    const team = await prisma.teamspace.findUnique({
+      where: {
+        id: id
+      },
+    })
+
+    if (!team) {
+      throw new Error('Team not found.')
+    }
+
+    const project = await prisma.project.findUnique({
+      where: {
+        id: team?.projectId
+      }
+    })
+
+    if (!project) {
+      throw new Error('Project not found.')
+    }
+
+    const usersList = await prisma.user.findMany({
+      where: {
+        id: {
+          in: team.userIDs
+        }
+      },
+      take: 3
+    })
+
+    return { projectName: project.projectName, teamSpace: { ...team, userPreview: [...usersList], totalUsersAmount: team.userIDs.length } }
+  } catch (error) {
     console.error('Failed to fetch team-space:', error);
     throw new Error('Failed to fetch team-space.');
   }

@@ -10,6 +10,8 @@ datasource db {
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
+  firstName     String
+  lastName      String
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
@@ -31,7 +33,7 @@ model Teamspace {
   description String
   userIDs     String[] @db.ObjectId
   Project     Project? @relation(fields: [projectId], references: [id])
-  projectId   String?  @db.ObjectId
+  projectId   String   @db.ObjectId
   Task        Task[]
 }
 

@@ -1,9 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Skeleton } from '@/components/ui/skeleton';
 
-export default function ThemeButton() {
+function ThemeButton() {
 
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -11,20 +11,19 @@ export default function ThemeButton() {
 
   if (!mounted) {
     return (
-      <Skeleton className="size-[30px]"/>
+      <Skeleton className="size-8"/>
     )
   }
 
   return (
     <>
       <button
-        className="transition-all hover:bg-black-blackA1 dark:hover:bg-white-whiteA1 rounded-md p-2"
+        className="transition-all hover:bg-black-blackA1 dark:hover:bg-neutral-800 rounded-md p-2"
         onClick={() => {
-          // localStorage.setItem('theme', 'dark')
           setTheme(theme === 'dark' ? 'light' : 'dark');
         }}
       >
-        <svg className="size-3.5 stroke-0 dark:stroke-darkGray-gray12 stroke-gray-gray12" viewBox="0 0 15 15"
+        <svg className="size-3.5 stroke-0 dark:stroke-neutral-50 stroke-neutral-950" viewBox="0 0 15 15"
              fill="none"
              xmlns="http://www.w3.org/2000/svg"
         >
@@ -43,3 +42,5 @@ export default function ThemeButton() {
     </>
   )
 }
+
+export default memo(ThemeButton)

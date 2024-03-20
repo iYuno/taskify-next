@@ -2,7 +2,6 @@
 import { useParams, useRouter } from 'next/navigation';
 import { Project, Teamspace } from '@prisma/client';
 import React from 'react';
-import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
 export default function ProjectsList({ projectsList }: {projectsList: Array<{teamSpaces: Teamspace[]} & Project>}) {
@@ -13,8 +12,21 @@ export default function ProjectsList({ projectsList }: {projectsList: Array<{tea
   return (
     <>
       {projectsList && projectsList.length > 0 ?
-        <Accordion value={typeof projectId === 'string' ? projectId : ''} type="single" collapsible
-                   className="w-full space-y-4 h-full overflow-scroll pl-4">
+        <Accordion
+          value={typeof projectId === 'string' ? projectId : ''} type="single" collapsible
+          className="w-full space-y-4 h-full overflow-hidden hover:overflow-auto pl-4 border-t border-transparent"
+          onScroll={event => {
+            if (event.currentTarget.scrollTop > 0) {
+              event.currentTarget.classList.add('dark:border-neutral-800')
+              event.currentTarget.classList.add('border-neutral-300')
+              event.currentTarget.classList.remove('border-transparent')
+            } else {
+              event.currentTarget.classList.remove('dark:border-neutral-800')
+              event.currentTarget.classList.remove('border-neutral-300')
+              event.currentTarget.classList.add('border-transparent')
+            }
+          }}
+        >
           {
             projectsList
               .sort((a, b) => a.projectName.localeCompare(b.projectName))
@@ -24,8 +36,16 @@ export default function ProjectsList({ projectsList }: {projectsList: Array<{tea
                   key={id}
                 >
                   <AccordionTrigger
-                    className={`ease-out font-montserrat capitalize dark:text-darkGray-gray11 text-gray-gray11 [&>p]:hover:text-gray-gray12 dark:[&>p]:hover:text-darkGray-gray12 [&>svg]:hover:stroke-gray-gray12 dark:[&>svg]:hover:stroke-darkGray-gray12 [&[data-state=open]>svg]:rotate-180 ${teamSpaceId !== undefined ? 'dark:[&[data-state=open]>*]:stroke-darkGray-gray12 [&[data-state=open]>*]:stroke-gray-gray12 dark:[&[data-state=open]>p]:text-darkGray-gray12 [&[data-state=open]>p]:text-gray-gray12' : '[&[data-state=open]>*]:stroke-blue-blue9 [&[data-state=open]>p]:text-blue-blue9'}`}>
-                    <Link href={`/project/${id}`} className="transition-all ease-out">{projectName}</Link>
+                    onClick={() => router.push(`/project/${id}`)}
+                    className={`ease-out font-montserrat capitalize
+                      dark:data-[state=open]:text-rose-500 dark:data-[state=closed]:text-neutral-400
+                      data-[state=open]:text-rose-600 data-[state=closed]:text-neutral-600 
+                      [&[data-state=open]>svg]:rotate-180 [&[data-state=closed]>svg]:text-transparent 
+                      dark:[&[data-state=closed]>svg]:hover:text-neutral-50 [&[data-state=closed]>svg]:hover:text-neutral-950
+                      ${teamSpaceId === undefined ? '' : 'dark:data-[state=open]:text-neutral-50 data-[state=open]:text-neutral-950 '} dark:hover:!text-neutral-50 hover:!text-neutral-950`
+                    }
+                  >
+                    <p>{projectName}</p>
                   </AccordionTrigger>
                   <AccordionContent className="pr-4">
                     {teamSpaces
@@ -33,16 +53,12 @@ export default function ProjectsList({ projectsList }: {projectsList: Array<{tea
                       .map((team) => (
                         <li
                           key={team.id}
-                          className={`transition-all ease-out ${team.id === teamSpaceId ? 'border-blue-blue10' : 'border-transparent'} cursor-pointer border-l-[1px] z-30 text-gray-gray12 dark:text-darkGray-gray12 capitalize pl-3`}>
+                          className={`transition-all ease-out ${team.id === teamSpaceId ? 'border-rose-600 dark:border-rose-500' : 'border-transparent dark:hover:border-neutral-400 hover:border-neutral-700'} cursor-pointer border-l-[1px] z-30 text-neutral-950 dark:text-neutral-50 capitalize pl-3`}>
                           <p
                             onClick={() => {
-                              if (!teamSpaceId) {
-                                router.push(`${id}/${team.id}`)
-                              } else {
-                                router.push(`${team.id}`)
-                              }
+                              router.push(`/project/${id}/${team.id}/board`)
                             }}
-                            className={`${team.id === teamSpaceId ? 'text-blue-blue11 dark:text-darkBlue-blue10' : 'dark:text-darkGray-gray11 text-gray-gray11'} hover:text-gray-gray12 dark:hover:text-darkGray-gray12 py-1.5 transition-colors ease-out text-sm rounded-sm w-full font-montserrat pl-[calc(0.625rem+2px)]`}
+                            className={`${team.id === teamSpaceId ? 'text-rose-600 dark:text-rose-500' : 'dark:text-neutral-400 text-neutral-600'} hover:text-neutral-950 dark:hover:text-neutral-50 py-0.5 transition-colors ease-out text-sm rounded-sm w-full font-montserrat pl-[calc(0.625rem+2px)]`}
                           >
                             {team.teamName}
                           </p>

@@ -15,16 +15,5 @@ export const sideNav = [
 ]
 
 export const tabs = [
-  {
-    key: 'board',
-  },
-  {
-    key: 'timeline'
-  },
-  {
-    key: 'list'
-  },
-  {
-    key: 'table'
-  }
+  'board', 'timeline', 'list', 'table'
 ]

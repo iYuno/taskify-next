@@ -11,9 +11,13 @@ import {
 import { Slash } from 'lucide-react';
 import Link from 'next/link';
 
-export default function Breadcrumbs({ project }: {project: {teamSpaces: Teamspace[]} & Project}) {
+export default async function Breadcrumbs({ project }: {project: {teamSpaces: Teamspace[]} & Project | null}) {
 
   const { teamSpaceId } = useParams()
+
+  if (!project) {
+    return null
+  }
 
   return (
     <div className="flex items-center space-x-2 font-montserrat capitalize">
@@ -22,7 +26,7 @@ export default function Breadcrumbs({ project }: {project: {teamSpaces: Teamspac
           <BreadcrumbItem>
             <Link
               href={`/project/${project.id}`}
-              className={`${teamSpaceId ? '' : 'text-darkGray-gray12'}`}
+              className={`${teamSpaceId ? '' : 'text-neutral-50'}`}
             >
               {project.projectName}
             </Link>

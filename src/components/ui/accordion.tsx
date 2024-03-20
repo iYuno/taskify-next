@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { ChevronUpIcon } from '@radix-ui/react-icons'
 
 import { cn } from '@/lib/utils'
+import { ChevronUpIcon } from 'lucide-react';
 
 const Accordion = AccordionPrimitive.Root
 
@@ -34,8 +34,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       <ChevronUpIcon
-        color="transparent"
-        className="h-3 w-3 rotate-90 shrink-0 transition-all ease-out stroke-transparent"
+        className="size-4 stroke-2 shrink-0 transition-all ease-out"
       />
       {children}
     </AccordionPrimitive.Trigger>
@@ -53,8 +52,8 @@ const AccordionContent = React.forwardRef<
     {...props}
   >
     <div className={cn('flex relative w-full', className)}>
-      <span className="absolute top-0 z-10 left-[5.5px] bottom-0 bg-gray-gray8 dark:bg-darkGray-gray8 w-[1px]"/>
-      <ul className="z-20 list-none flex flex-col w-full pl-[calc(0.375rem-0.5px)] ">{children}</ul>
+      <span className="absolute top-0 z-10 left-[7px] bottom-0 bg-neutral-300 dark:bg-neutral-700 w-[1px]"/>
+      <ul className="z-20 list-none flex flex-col gap-y-1.5 w-full pl-[calc(0.375rem+1px)] ">{children}</ul>
     </div>
   </AccordionPrimitive.Content>
 ))

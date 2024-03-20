@@ -13,11 +13,13 @@
     }
 
     .bgInteractive {
-        @apply hover:bg-gray-gray4 dark:hover:bg-darkGray-gray4
+        @apply
+        hover:bg-neutral-200 dark:hover:bg-neutral-800
+        transition-all ease-out
     }
 
     .mainText {
-        @apply text-gray-gray12 dark:text-darkGray-gray12
+        @apply text-gray-950 dark:text-gray-50
     }
 
     .interactiveButton {
@@ -25,51 +27,46 @@
         mainText capitalize
         px-2 py-1
         transition-all
-        border rounded-sm dark:border-darkGray-gray6 dark:hover:border-darkGray-gray8 border-gray-gray8 hover:border-gray-gray12
-        dark:bg-darkGray-gray4
+        border rounded-sm
+        dark:border-neutral-800 dark:hover:border-neutral-500
+        border-neutral-300 hover:border-neutral-950
+        dark:bg-neutral-800
     }
 
     .authButton {
         @apply
-        outline-2 dark:outline-darkBlue-blue8 outline-blue-blue8
+        outline-2 outline-blue-800
         flex justify-center items-center
         transition-colors ease-out
         w-full
         py-3
         rounded-sm
         border
-        dark:bg-darkGray-gray2 bg-gray-gray2
-        dark:border-darkGray-gray6 border-gray-gray6
-        hover:dark:border-darkGray-gray12 hover:border-gray-gray12
+        /*dark:bg-darkGray-gray2 bg-gray-gray2*/
+        /*dark:border-neutral-600 border-neutral-300*/
+        /*hover:dark:border-neutral-50 hover:border-neutral-950*/
     }
+}
+
+.dark {
+    ::-webkit-scrollbar-thumb {
+        @apply
+        bg-neutral-800
+        rounded-md
+        transition-all ease-out
+        cursor-pointer
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    @apply
+    bg-neutral-300
+    rounded-md
+    transition-all ease-out
+    cursor-pointer
 }
 
 ::-webkit-scrollbar {
     width: 7px;
     height: 0;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    @apply
-    dark:bg-darkGray-gray6 bg-gray-gray6
-    rounded-sm
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    @apply
-    dark:bg-darkGray-gray9 bg-gray-gray9
-}
-
-::-webkit-scrollbar-corner {
-}
-
-::-webkit-scrollbar-button {
-    background: aliceblue;
 }

@@ -34,7 +34,7 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en" className={`${montserrat.variable}`} suppressHydrationWarning>
-      <body className={'dark:bg-darkGray-gray2 bg-gray-gray2'}>
+      <body className={'dark:bg-neutral-900 bg-neutral-50'}>
       <Providers>{children}</Providers>
       </body>
       </html>

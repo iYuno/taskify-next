@@ -14,7 +14,7 @@ export default function MainNavigation() {
       {
         sideNav.map(({ key, linkUrl }) => (
           <Link
-            className={`mainNavLink ${pathname.startsWith(linkUrl) ? 'dark:bg-darkBlue-blue9 bg-blue-blue9 text-[white] [&>svg]:stroke-darkGray-gray12' : 'bgInteractive dark:text-darkGray-gray11 text-gray-gray11 [&>svg]:stroke-gray-gray11 dark:[&>svg]:stroke-darkGray-gray11 [&>svg]:hover:stroke-gray-gray12 dark:[&>svg]:hover:stroke-darkGray-gray12 dark:hover:text-darkGray-gray12 hover:text-gray-gray12'} `}
+            className={`border-l border-transparent mainNavLink ${pathname.startsWith(linkUrl) ? 'dark:border-l-rose-500 border-l-rose-600 dark:bg-neutral-800 bg-neutral-800 hover:bg-neutral-900 text-neutral-50 dark:hover:bg-neutral-800/75' : 'bgInteractive dark:hover:border-l-rose-500 hover:border-l-rose-600 dark:text-neutral-400 text-neutral-600 dark:hover:text-neutral-50 hover:text-neutral-950'} `}
             href={linkUrl}
             key={key}
           >

@@ -31,12 +31,12 @@ export default function LoginForm() {
       >
         <div
           className="authButton space-x-4 font-semibold">
-          <FaGithub className="h-5 w-5 fill-gray-gray12 dark:fill-darkGray-gray12"/>
+          <FaGithub className="h-5 w-5 fill-neutral-950 dark:fill-neutral-50"/>
           <p className="mainText">Continue with GitHub</p>
         </div>
       </button>
       <div className="w-full text-center">
-        <p className="mainText dark:text-darkGray-gray8">or</p>
+        <p className="mainText dark:text-neutral-700">or</p>
       </div>
       <form className="space-y-4"
             action={(data) => dispatch({ data, callbackUrl: callbackUrl.get('callbackUrl') })}>
@@ -64,7 +64,7 @@ export default function LoginForm() {
           </div>
         </div>
         <button
-          className="w-full py-3 transition-all ease-out rounded-sm bg-blue-blue9 hover:bg-blue-blue10 text-darkGray-gray12 font-semibold"
+          className="w-full py-3 transition-all ease-out rounded-sm bg-rose-500 hover:bg-blue-700 text-neutral-50 font-semibold"
           type="submit"
           aria-disabled={isPending}>
           Log in
