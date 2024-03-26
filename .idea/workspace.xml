@@ -12,36 +12,20 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/[teamSpaceId]/(view)/board/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/[teamSpaceId]/(view)/board/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/[teamSpaceId]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/[teamSpaceId]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboard)/project/[projectId]/loading.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/auth/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/loading.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/breadcrumbs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/breadcrumbs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/loginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navIcons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navIcons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/projectHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/projectHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/projectsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/projectsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/registerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registerForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/searchAny.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchAny.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabIcons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabIcons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabsNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabsNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/accordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/breadcrumb.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/breadcrumb.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/check.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/check.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/skeleton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/teamHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/teamHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ui/themeButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/themeButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/const.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +35,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="tsconfig.json" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -101,11 +85,11 @@
       <recent name="$PROJECT_DIR$/src/app/ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/api" />
+      <recent name="$PROJECT_DIR$/src/app/api/projects" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/app/dashboard/project/[projectId]" />
       <recent name="$PROJECT_DIR$/src/app/dashboard" />
-      <recent name="$PROJECT_DIR$/src/lib" />
-      <recent name="$PROJECT_DIR$/src/app" />
     </key>
   </component>
   <component name="RunManager">
@@ -159,7 +143,10 @@
       <workItem from="1710494410662" duration="6899000" />
       <workItem from="1710515410738" duration="1000" />
       <workItem from="1710581112543" duration="4709000" />
-      <workItem from="1710952083930" duration="10219000" />
+      <workItem from="1710952083930" duration="11657000" />
+      <workItem from="1711104222023" duration="8236000" />
+      <workItem from="1711210754625" duration="5063000" />
+      <workItem from="1711482524113" duration="10471000" />
     </task>
     <servers />
   </component>

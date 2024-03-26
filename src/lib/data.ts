@@ -37,6 +37,7 @@ export async function getUser(email: string) {
 
 export async function getProjectsList(userId: string) {
   // await new Promise(resolve => setTimeout(resolve, 5000));
+  console.log()
   try {
     return await prisma.project.findMany({
       where: {
@@ -71,10 +72,9 @@ export async function getProject(id: string) {
   }
 }
 
-export async function getTeamSpace(id: string) {
+export async function getTeamSpaceTasks(id: string) {
   unstable_noStore()
   try {
-    // await new Promise(resolve => setTimeout(resolve, 1500));
     const team = await prisma.teamspace.findUnique({
       where: {
         id: id
@@ -99,6 +99,7 @@ export async function getTeamSpaceInfo(id: string): Promise<{
 }> {
   unstable_noStore()
   try {
+    // await new Promise(resolve => setTimeout(resolve, 5000));
     const team = await prisma.teamspace.findUnique({
       where: {
         id: id

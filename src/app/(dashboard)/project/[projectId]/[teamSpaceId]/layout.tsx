@@ -15,16 +15,17 @@ export default async function Layout({ children, params }: {
     <>
       <Suspense fallback={
         <>
-          <div className="flex h-8 items-center justify-between">
-            <div className="flex space-x-2">
+          <div className="flex h-[1.875rem] items-center !my-0 justify-between">
+            <div className="flex gap-x-2">
               <Skeleton className="h-5 w-10"/>
               <Skeleton className="h-5 w-20"/>
             </div>
             <Skeleton className="size-5"/>
           </div>
-          <div className="flex my-2 h-10 w-full justify-between items-center gap-x-4">
+          <div className="flex my-2 h-10 w-full justify-between items-center gap-x-2">
             <Skeleton className="h-8 w-full"/>
-            <div className="space-x-4 flex font-montserrat text-sm h-fit">
+            <div className="gap-x-2 flex font-montserrat text-sm h-fit items-center">
+              <Skeleton className="h-8 w-16"/>
               <Skeleton className="h-8 w-16"/>
               <Skeleton className="h-8 w-24"/>
             </div>

@@ -1,17 +1,30 @@
 'use client'
 import { useParams, useRouter } from 'next/navigation';
 import { Project, Teamspace } from '@prisma/client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { useCurrentUser } from '@/hooks/use-current-user';
+import { Skeleton } from '@/components/ui/skeleton';
+import useSWR from 'swr';
 
-export default function ProjectsList({ projectsList }: {projectsList: Array<{teamSpaces: Teamspace[]} & Project>}) {
+export default function ProjectsList(
+  // { projectsList }: {projectsList: Array<{teamSpaces: Teamspace[]} & Project>}
+) {
 
   const { projectId, teamSpaceId } = useParams()
   const router = useRouter()
+  const user = useCurrentUser()
+  const [projectsList, setProjectsList] = useState<Array<{teamSpaces: Teamspace[]} & Project> | null>(null);
+
+  const { data, error, isLoading } = useSWR('/api/projects?userId=65e072bd16f275640fd5926f', key => fetch(key).then(res => res.json()))
+
+  useEffect(() => {
+    setProjectsList(data)
+  }, [isLoading])
 
   return (
     <>
-      {projectsList && projectsList.length > 0 ?
+      {!isLoading ?
         <Accordion
           value={typeof projectId === 'string' ? projectId : ''} type="single" collapsible
           className="w-full space-y-4 h-full overflow-hidden hover:overflow-auto pl-4 border-t border-transparent"
@@ -28,7 +41,7 @@ export default function ProjectsList({ projectsList }: {projectsList: Array<{tea
           }}
         >
           {
-            projectsList
+            projectsList && projectsList
               .sort((a, b) => a.projectName.localeCompare(b.projectName))
               .map(({ id, projectName, teamSpaces }) => (
                 <AccordionItem
@@ -69,7 +82,10 @@ export default function ProjectsList({ projectsList }: {projectsList: Array<{tea
               ))
           }
         </Accordion> :
-        <></>}
+        <div className="px-4 h-full">
+          <Skeleton className="h-full"/>
+        </div>
+      }
     </>
   )
 }

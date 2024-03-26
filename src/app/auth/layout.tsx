@@ -7,7 +7,7 @@ export default async function Layout({ children }: {children: ReactNode}) {
     <main className="flex items-center justify-center md:h-screen relative">
       <div className="relative flex w-[30vw] flex-col">
         <div
-          className="dark:bg-y-gray3 bg-gray-gray3 px-6 py-12 space-y-4 border border-neutral-300 dark:border-neutral-600 rounded-sm"
+          className="dark:bg-neutral-800 bg-gray-gray3 px-6 py-12 space-y-4 border border-neutral-400 dark:border-neutral-600 rounded-md"
         >
           {children}
         </div>
