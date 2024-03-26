@@ -26,17 +26,14 @@ export default function LoginForm() {
         Sign in to Flawless
       </h1>
       <button
-        className="flex w-full"
+        className="flex w-full authButton space-x-4 font-semibold"
         onClick={() => onClick('github')}
       >
-        <div
-          className="authButton space-x-4 font-semibold">
-          <FaGithub className="h-5 w-5 fill-neutral-950 dark:fill-neutral-50"/>
-          <p className="mainText">Continue with GitHub</p>
-        </div>
+        <FaGithub className="h-5 w-5 fill-neutral-950 dark:fill-neutral-50"/>
+        <p className="mainText">Continue with GitHub</p>
       </button>
       <div className="w-full text-center">
-        <p className="mainText dark:text-neutral-700">or</p>
+        <p className="mainText dark:text-neutral-400">or</p>
       </div>
       <form className="space-y-4"
             action={(data) => dispatch({ data, callbackUrl: callbackUrl.get('callbackUrl') })}>
@@ -64,7 +61,7 @@ export default function LoginForm() {
           </div>
         </div>
         <button
-          className="w-full py-3 transition-all ease-out rounded-sm bg-rose-500 hover:bg-blue-700 text-neutral-50 font-semibold"
+          className="w-full py-3 transition-all ease-out rounded-md bg-rose-600 hover:bg-rose-500 text-neutral-50 font-semibold"
           type="submit"
           aria-disabled={isPending}>
           Log in
@@ -73,7 +70,7 @@ export default function LoginForm() {
       <div className={'flex justify-center'}>
         <p className="mainText">New to Flawless? &nbsp;</p>
         <Link href={'/auth/register'}
-              className={'transition-all ease-out text-darkGreen-green10 hover:text-darkGreen-green11 font-medium'}>
+              className={'transition-all ease-out text-emerald-500 hover:text-emerald-400 font-medium'}>
           Create now
         </Link>
       </div>

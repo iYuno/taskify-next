@@ -64,15 +64,11 @@ export default function RegisterForm() {
         )
       }
       <button
-
-        className="flex w-full"
+        className="flex w-full authButton space-x-4 font-semibold"
         onClick={() => onClick('github')}
       >
-        <div
-          className="authButton space-x-4 font-semibold">
-          <FaGithub className="size-5 dark:fill-neutral-50 fill-neutral-950"/>
-          <p className="mainText">Continue with GitHub</p>
-        </div>
+        <FaGithub className="h-5 w-5 fill-neutral-950 dark:fill-neutral-50"/>
+        <p className="mainText">Continue with GitHub</p>
       </button>
       <div className="w-full text-center">
         <p className="mainText dark:text-neutral-700">or</p>
@@ -107,7 +103,7 @@ export default function RegisterForm() {
           </div>
         </div>
         <button
-          className="w-full py-3 transition-all ease-out rounded-sm bg-rose-500 hover:bg-rose-500 text-neutral-50 font-semibold"
+          className="w-full py-3 transition-all ease-out rounded-md bg-rose-600 hover:bg-rose-500 text-neutral-50 font-semibold"
           type="submit"
           aria-disabled={isPending}>
           {isPending ? 'Loading' : 'Sign Up'}
@@ -116,7 +112,7 @@ export default function RegisterForm() {
       <div className={'flex justify-center'}>
         <p className={'mainText'}>Already have an account? &nbsp;</p>
         <Link href={'/auth/login'}
-              className={'transition-all ease-out text-darkGreen-green10 hover:text-darkGreen-green11 font-medium'}>
+              className={'transition-all ease-out text-emerald-500 hover:text-emerald-400 font-medium'}>
           Log in
         </Link>
       </div>

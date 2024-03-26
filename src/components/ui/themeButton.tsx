@@ -11,7 +11,9 @@ function ThemeButton() {
 
   if (!mounted) {
     return (
-      <Skeleton className="size-8"/>
+      <div className="m-[0.3125rem]">
+        <Skeleton className="size-5"/>
+      </div>
     )
   }
 

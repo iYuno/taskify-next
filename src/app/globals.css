@@ -35,16 +35,16 @@
 
     .authButton {
         @apply
-        outline-2 outline-blue-800
+        outline-2
         flex justify-center items-center
         transition-colors ease-out
         w-full
         py-3
-        rounded-sm
+        rounded-md
         border
-        /*dark:bg-darkGray-gray2 bg-gray-gray2*/
-        /*dark:border-neutral-600 border-neutral-300*/
-        /*hover:dark:border-neutral-50 hover:border-neutral-950*/
+        dark:bg-neutral-900 bg-neutral-50
+        dark:border-neutral-600 border-neutral-300
+        hover:dark:border-neutral-200 hover:border-neutral-950
     }
 }
 
